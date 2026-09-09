@@ -1,0 +1,14 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: cache-coalescing-demo
+
+demo:
+  cache:
+    max-size: 10000
+    ttl-seconds: 30
+  database:
+    delay-ms: 1000
+    timeout-ms: 1500
