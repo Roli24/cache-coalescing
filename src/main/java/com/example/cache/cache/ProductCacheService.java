@@ -42,19 +42,6 @@ public class ProductCacheService {
         return loadWithCoalescing(id);
     }
 
- /* public CompletableFuture<Product> getProduct(String id) {
-    Product cached = cache.getIfPresent(id);
-
-    if (cached != null) {
-      return CompletableFuture.completedFuture(cached);
-    }
-
-    Product product = repository.findById(id);
-    cache.put(id, product);
-
-    return CompletableFuture.completedFuture(product);
-  }*/
-
   private CompletableFuture<Product> loadWithCoalescing(String id) {
     return inFlight.computeIfAbsent(id, key -> {
       System.out.println("🚀 START DB LOAD: " + key);

@@ -1,6 +1,5 @@
 package com.example.cache.web;
 
-import com.example.cache.ProductService;
 import com.example.cache.cache.ProductCacheService;
 import com.example.cache.product.Product;
 import com.example.cache.product.ProductRepository;
@@ -14,22 +13,16 @@ import java.util.concurrent.CompletableFuture;
 public class ProductController {
     private final ProductCacheService cacheService;
     private final ProductRepository repository;
-    private final ProductService productService;
 
-    public ProductController(ProductCacheService cacheService, ProductRepository repository, ProductService productService) {
+    public ProductController(ProductCacheService cacheService, ProductRepository repository) {
         this.cacheService = cacheService;
         this.repository = repository;
-        this.productService = productService;
     }
 
     @GetMapping("/products/{id}")
     public CompletableFuture<Product> getProduct(@PathVariable String id) {
         return cacheService.getProduct(id);
     }
- /* @GetMapping("/products/{id}")
-  public Product getProduct(@PathVariable String id) {
-    return productService.getProduct(id);
-  }*/
 
   @GetMapping("/stats")
     public Map<String, Object> stats() {
