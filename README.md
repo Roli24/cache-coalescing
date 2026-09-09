@@ -12,6 +12,10 @@ It combines three things:
 3. **Timeout protection** — `CompletableFuture.orTimeout(...)` so a slow/stuck load can't
    hang every caller waiting on it forever
 
+▶ **[Play with an interactive simulation](https://claude.ai/code/artifact/9a91a421-f1e7-476a-bc11-f86b930c507e)** —
+fire concurrent requests, toggle a slow database, and watch them coalesce onto one call live,
+with a trace against the real source.
+
 ## Run
 
 Requires Java 17+ and Gradle 8.14+.
